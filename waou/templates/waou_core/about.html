@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+<main class="form-signin w-25 m-auto">
+    {% if user.is_authenticated %}
+    <div>
+        <img src="{% static 'img/waou.png' %}" />
+        <p>hi {{ user.first_name }}</p>
+        <h2>Welcome to the Remote Work Collaboration Platform</h2>
+        <p>Manage your projects and collaborate with your team efficiently.</p>
+    </div>
+    {% endif %}
+</main>
+
+{% endblock %}
