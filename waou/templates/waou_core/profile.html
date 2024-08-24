@@ -4,10 +4,10 @@
 {% block title %}Your Profile{% endblock %}
 
 {% block content %}
-<main class="form-signup w-25 m-auto">
-    <div class="card">
+<main class="container d-flex flex-column justify-content-center align-items-center min-vh-100">
+    <div class="card shadow-sm p-4" style="width: 100%; max-width: 500px;">
         <div class="card-body">
-            <h5 class="card-title">hi, {{ request.user.first_name }} {{ request.user.last_name }}</h5>
+            <h5 class="card-title mb-3">Hi, {{ request.user.first_name }} {{ request.user.last_name }}</h5>
             <p class="card-text"><strong>Username:</strong> {{ request.user.username }}</p>
             <p class="card-text"><strong>Email:</strong> {{ request.user.email }}</p>
             <p class="card-text"><strong>Role:</strong> {{ request.user.get_role_display }}</p>

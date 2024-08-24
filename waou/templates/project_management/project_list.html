@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Project List{% endblock %}
+
+{% block content %}
+<main class="container mt-4">
+    <h2 class="mb-4">Project List</h2>
+    <div class="list-group">
+        {% for project in projects %}
+            <a href="{% url 'project_detail' project.pk %}" class="list-group-item list-group-item-action">
+                {{ project.name }}
+            </a>
+        {% endfor %}
+    </div>
+    <a href="{% url 'project_create' %}" class="btn btn-primary mt-4">Create New Project</a>
+</main>
+{% endblock %}

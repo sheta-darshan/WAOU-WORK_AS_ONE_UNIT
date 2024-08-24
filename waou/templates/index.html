@@ -4,12 +4,11 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<main class="form-signin w-25 m-auto">
-    <div>
-        <img src="{% static 'img/waou.png' %}" />
-        <h2>Welcome to the Remote Work Collaboration Platform</h2>
-        <p>Manage your projects and collaborate with your team efficiently.</p>
+<main class="container d-flex flex-column justify-content-center align-items-center min-vh-100">
+    <div class="text-center">
+        <img src="{% static 'img/waou.png' %}" alt="WAOU Logo" class="img-fluid mb-4" style="max-width: 150px;">
+        <h2 class="mb-3">Welcome to the Remote Work Collaboration Platform</h2>
+        <p class="lead">Manage your projects and collaborate with your team efficiently.</p>
     </div>
 </main>
-
 {% endblock %}

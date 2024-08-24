@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Task Detail{% endblock %}
+
+{% block content %}
+<main class="container mt-4">
+    <h2 class="mb-4">Task Detail</h2>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Task Details</h5>
+            <p class="card-text"><strong>Project:</strong> {{ task.project.name }}</p>
+            <p class="card-text"><strong>Name:</strong> {{ task.name }}</p>
+            <p class="card-text"><strong>Description:</strong> {{ task.description }}</p>
+            <p class="card-text"><strong>Assigned To:</strong> {{ task.assigned_to.username }}</p>
+            <p class="card-text"><strong>Due Date:</strong> {{ task.due_date }}</p>
+            <p class="card-text"><strong>Status:</strong>
+                {% if task.status == 'todo' %}
+                    <span class="badge bg-secondary">To Do</span>
+                {% elif task.status == 'in_progress' %}
+                    <span class="badge bg-warning text-dark">In Progress</span>
+                {% elif task.status == 'done' %}
+                    <span class="badge bg-success">Done</span>
+                {% endif %}
+            </p>
+            {% if user == task.assigned_to %}
+            <a href="{% url 'task_update' task.pk %}" class="btn btn-warning">Edit</a>
+            {% endif %}
+            {% if user.is_authenticated and user.role == 'admin' %}
+            <a href="{% url 'task_delete' task.pk %}" class="btn btn-danger">Delete</a>
+            {% endif %}
+            <a href="{% url 'task_list' %}" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</main>
+{% endblock %}

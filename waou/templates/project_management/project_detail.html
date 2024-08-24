@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Project Detail{% endblock %}
+
+{% block content %}
+<main class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h1 class="card-title">{{ project.name }}</h1>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{ project.description }}</p>
+            <p><strong>Start Date:</strong> {{ project.start_date }}</p>
+            <p><strong>End Date:</strong> {{ project.end_date }}</p>
+            
+            <h2 class="mt-4">Team Members</h2>
+            <ul class="list-group">
+                {% for member in project.team.all %}
+                <li class="list-group-item">{{ member.first_name }} {{ member.last_name }}</li>
+                {% empty %}
+                <li class="list-group-item">No team members assigned.</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="card-footer text-muted">
+            <a href="{% url 'project_update' project.pk %}" class="btn btn-warning">Edit</a>
+            <a href="{% url 'project_delete' project.pk %}" class="btn btn-danger">Delete</a>
+            <a href="{% url 'project_list' %}" class="btn btn-primary">Back to Project List</a>
+        </div>
+    </div>
+</main>
+{% endblock %}

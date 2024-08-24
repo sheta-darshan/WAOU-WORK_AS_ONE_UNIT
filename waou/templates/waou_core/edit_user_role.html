@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Edit Role{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h1 class="mb-4">Edit Role for {{ user.username }}</h1>
+  <form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="role">Role:</label>
+      <select name="role" id="role" class="form-control">
+        {% for group in roles %}
+          <option value="{{ group.name }}" {% if group.name == user.role %}selected{% endif %}>{{ group.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
+  </form>
+</div>
+{% endblock %}
